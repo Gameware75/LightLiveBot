@@ -2,7 +2,7 @@
 The LightLiveBOT On Twitter (X) Is a bot that informs you who a #LIGHTMOTIF talent is going live.
 
 ### Web
-Website will be available soon
+[Website](https://lightlivebot.gw75.de)
 
 ### Code
 
