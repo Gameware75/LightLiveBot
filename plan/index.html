@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Light Live Bot</title>
-  <link rel="icon" type="image/x-icon" href="https://resource.lightlivebot.gw75.de/icons/logo.png">
+    <link rel="icon" type="image/x-icon" href="https://resource.lightlivebot.gw75.de/icons/logo.png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -86,10 +86,7 @@
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
-
 </head>
-<body>
-
 <div class="menu-bar">
     <a href="../index.html"><img src="https://resource.lightlivebot.gw75.de/icons/home.png" height="40" width="40"></a>
     <a href="../plan"><img src="https://resource.lightlivebot.gw75.de/icons/kalender.png" height="40" width="40"></a>
@@ -100,12 +97,22 @@
 <div class="content">
     <h1>LightLiveBot</h1>
     <h2>Stream Plans</h2>
-    <a href="https://resource.lightlivebot.gw75.de/Plans/Lunywoo.png" data-lightbox="image-set"><img src="https://resource.lightlivebot.gw75.de/Plans/Lunywoo.png" width="400" height="200"></a>
-    <a href="https://resource.lightlivebot.gw75.de/Plans/Mona.png" data-lightbox="image-set"><img src="https://resource.lightlivebot.gw75.de/Plans/Mona.png" width="400" height="200"></a>
-    <a href="https://resource.lightlivebot.gw75.de/Plans/Jinja.png" data-lightbox="image-set"><img src="https://resource.lightlivebot.gw75.de/Plans/Jinja.png" width="400" height="200"></a>
-    <a href="https://resource.lightlivebot.gw75.de/Plans/Laphipi.png" data-lightbox="image-set"><img src="https://resource.lightlivebot.gw75.de/Plans/Laphipi.png" width="400" height="200"></a>
-    <a href="https://resource.lightlivebot.gw75.de/Plans/Finstey.png" data-lightbox="image-set"><img src="https://resource.lightlivebot.gw75.de/Plans/Finstey.png" width="400" height="200"></a>
-    <a href="https://resource.lightlivebot.gw75.de/Plans/Nayami.png" data-lightbox="image-set">><img src="https://resource.lightlivebot.gw75.de/Plans/Nayami.png" width="400" height="200" ></a>
+    <script>
+        // JSON-Datei mit den Plan-URLs laden
+        fetch("http://lightlivebot.gw75.de/resource/planurl.json")
+            .then(response => response.json())
+            .then(data => {
+                // Iteriere durch die JSON-Daten und füge die Pläne in das HTML ein
+                for (const streamer in data) {
+                    const planURL = data[streamer];
+                    const imageHTML = `<a href="${planURL}" data-lightbox="image-set"><img src="${planURL}" width="400" height="200"></a>`;
+                    document.querySelector('.content').innerHTML += imageHTML;
+                }
+            })
+            .catch(error => {
+                console.error('Fehler beim Laden der Plan-URLs: ' + error);
+            });
+    </script>
     <p>.</p>
     <p>.</p>
     <p> </p>
@@ -114,8 +121,8 @@
 
 <div class="footer">
     <p>Der Bot so wie diese Webseite ist nicht von Lightmotiv erstellt, sondern ein Fan Project von Gameware75
-    Lightmotiv übernimmt keine Haftung für den Inhalt der LightLiveBot Twitter Seite und dieser Webseite
-    Für Verbesserung Vorschläge oder Kritik bezüglich des Bots und oder dieser Webseite gehen sie zu</p>
+        Lightmotiv übernimmt keine Haftung für den Inhalt der LightLiveBot Twitter Seite und dieser Webseite
+        Für Verbesserung Vorschläge oder Kritik bezüglich des Bots und oder dieser Webseite gehen sie zu</p>
     <p></p>
     <a href="http://lightlivebot.gw75.de/Feedback" style="color: white">http://lightlivebot.gw75.de/Feedback</a>
 </div>
@@ -131,10 +138,7 @@
         setTimeout(function() {
             notificationIcon.style.display = 'none';
         }, 10000);  // 10000 Millisekunden entsprechen 10 Sekunden
-
     }, 6000);  // 60000 Millisekunden entsprechen 60 Sekunden
-
-
 </script>
 </body>
 </html>
